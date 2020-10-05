@@ -1,4 +1,5 @@
-import 'package:animations/animator.dart';
+import 'package:animations/chat_page.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'dart:math';
 
@@ -50,7 +51,9 @@ class _MyHomePageState extends State<MyHomePage>
       begin: 0,
       end: 2 * pi,
     ).animate(curvedAnimation)
-      ..addListener(() {})
+      ..addListener(() {
+        setState(() {});
+      })
       ..addStatusListener((status) {
         if (status == AnimationStatus.completed) {
           animationController.reverse();
@@ -60,6 +63,12 @@ class _MyHomePageState extends State<MyHomePage>
       });
     animationController.forward();
   }
+
+  List<String> choices = <String>[
+    "Item 1",
+    "Item 2",
+    "Item 3",
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -71,9 +80,19 @@ class _MyHomePageState extends State<MyHomePage>
           onPressed: () {},
           backgroundColor: Colors.transparent,
           elevation: 0,
-          child: Image.asset(
-            'assets/chat.png',
-            color: Colors.blue[800],
+          tooltip: "DRAG ME!",
+          child: Draggable(
+            feedback: Image.asset(
+              'assets/chat.png',
+              height: 45,
+              color: Colors.blue[800],
+            ),
+            childWhenDragging: Container(),
+            child: Image.asset(
+              'assets/chat.png',
+              height: 45,
+              color: Colors.blue[800],
+            ),
           ),
         ),
         body: ListView.builder(
@@ -90,8 +109,18 @@ class _MyHomePageState extends State<MyHomePage>
                   ),
                   title: Text("Friend $index"),
                   trailing: IconButton(
-                    icon: Icon(Icons.more_horiz),
-                    onPressed: () {},
+                    icon: Icon(Icons.forward),
+                    onPressed: () {
+                      Navigator.of(context).push(CupertinoPageRoute(
+                        fullscreenDialog: true,
+                        builder: (context) =>
+                            ChatPage(friendName: "Friend $index"),
+                      ));
+                      // Navigator.of(context).push(MaterialPageRoute(
+                      //   builder: (context) =>
+                      //       ChatPage(friendName: "Friend $index"),
+                      // ));
+                    },
                   ),
                 ),
               );
