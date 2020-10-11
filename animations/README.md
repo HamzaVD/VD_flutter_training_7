@@ -1,16 +1,17 @@
-# animations
 
-A new Flutter project.
+# VD_flutter_training_7
 
-## Getting Started
+## Animations
 
-This project is a starting point for a Flutter application.
+This app demonstrates animations in Flutter
 
-A few resources to get you started if this is your first Flutter project:
+# Screenshots
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Animations Icon State 1
+![](images/image_1.png)
+## Animations Icon State 2
+![](images/image_2.png)
+## Animations Icon State 3
+![](images/image_3.png)
+## Sample Chat Screen
+![](images/image_4.png)
